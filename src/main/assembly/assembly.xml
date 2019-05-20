@@ -1,0 +1,33 @@
+<assembly>
+  <id>jar</id>
+  <formats>
+    <format>jar</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory></outputDirectory>
+      <outputFileNameMapping></outputFileNameMapping>
+      <unpack>true</unpack>
+      <scope>runtime</scope>
+      <excludes>
+      	<exclude>xml-apis:*</exclude>
+      </excludes>
+    </dependencySet>
+  </dependencySets>
+  <fileSets>
+    <fileSet>
+      <directory>target/classes</directory>
+      <outputDirectory></outputDirectory>
+    </fileSet>
+  </fileSets>
+  <!-- 
+    <files>
+    	<file>
+    		<source>src/main/resources/version.properties</source>
+    		<outputDirectory></outputDirectory>
+    		<filtered>true</filtered>
+    	</file>
+    </files>
+    -->
+</assembly>
