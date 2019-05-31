@@ -27,7 +27,7 @@ import org.apache.maven.plugin.MojoExecutionException;
  * Goal to echo the version number to a file.
  *
  * @goal version
- * @phase compile
+ * @phase generate-resources
  */
 public class WriteVersion extends AbstractMojo implements org.apache.maven.plugin.Mojo
 {

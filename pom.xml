@@ -9,7 +9,7 @@
     <groupId>org.anc.maven.plugins</groupId>
     <artifactId>anc-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>1.0.7</version>
+    <version>1.1.0-SNAPSHOT</version>
     <name>ANC Maven Plugin</name>
     <description>Generates license, copyright files and logback configuration.</description>
     <url>http://www.anc.org/dev/anc-maven-plugin</url>
@@ -19,19 +19,21 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-    <issueManagement>
-        <system>Trac</system>
-        <url>http://www.anc.org/wiki</url>
-    </issueManagement>
-    <ciManagement>
-        <system>Hudson</system>
-        <url>http://www.anc.org:8080/hudson</url>
-    </ciManagement>
     <scm>
-        <connection>scm:svn:http://www.anc.org/dev/anc-maven-plugin</connection>
-        <developerConnection>scm:svn:https://www.anc.org/dev/anc-maven-plugin</developerConnection>
-        <url>http://www.anc.org/dev/anc-maven-plugin</url>
+        <url>https://github.com/oanc/anc-maven-plugin</url>
+        <connection>scm:git:https://github.com/oanc/anc-maven-plugin.git</connection>
+        <developerConnection>scm:git:https://github.com/oanc/anc-maven-plugin.git</developerConnection>
     </scm>
+    <issueManagement>
+        <url>https://github.com/oanc/anc-maven-plugin/issues</url>
+        <system>GitHub issues</system>
+    </issueManagement>
+    <!--
+    <ciManagement>
+        <url>https://travis-ci.org/oanc/anc-maven-plugin</url>
+        <system>travis</system>
+    </ciManagement>
+    -->
     <organization>
         <name>American National Corpus</name>
         <url>http://www.anc.org</url>
@@ -44,10 +46,10 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>3.8.0</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -68,6 +70,25 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <release.type>release</release.type>
-        <last.stable.version>1.0.5</last.stable.version>
+        <last.stable.version>1.0.7</last.stable.version>
     </properties>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.8</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>sonatype-staging</serverId>
+                            <nexusUrl>https://oss.sonatype.org</nexusUrl>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
